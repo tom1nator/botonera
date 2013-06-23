@@ -1,6 +1,6 @@
 
 var playing = new Array();
-for (var i = 0; i < 2; i++) {
+for (var i = 0; i < 3; i++) {
 	playing[i]="false"
 }
 
@@ -9,6 +9,7 @@ function imprimirVolumen(){
 	var vol = document.getElementById("vol");
 	var s7 = document.getElementById("s7");
 	var s8 = document.getElementById("s8");
+	var s9 = document.getElementById("s9");
 
 	vol.innerHTML=s7.volume
 }
@@ -35,14 +36,19 @@ function stopSound(inx) {
 	var s=document.getElementById("s"+inx);
 		s.pause();
 		s.currentTime = 0;
+
+
 }
 function colorear(inx){
+	console.log(inx);
 	$("#b"+inx).addClass("activo");
 }
 function decolorar(inx){
+	console.log(inx);
 	$("#b"+inx).removeClass("activo");
 }
 function apretar(inx){
+	console.log(inx);
 	if (playing[inx]=="false"){
 		colorear(inx);
 		playSound(inx);

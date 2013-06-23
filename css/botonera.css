@@ -21,6 +21,11 @@ border-color: orange;
 	text-align: center;
 	display: inline-block;
 }
+
+
+.bttn.activo{
+	border-color:orange;
+}
 #vol{
 	color: white;
 }
