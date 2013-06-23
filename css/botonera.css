@@ -1,7 +1,8 @@
 body{
-	background-color: rgb(20,20,20);
+	background: rgb(20,20,20);
+	color:#eee;
 }
-#container{
+#botones{
 position:relative;
 width:50%;
 margin:0 auto;

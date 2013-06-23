@@ -4,28 +4,34 @@
 	<meta charset="UTF-8">
 	<title>Botonera de Audios</title>
 	<link rel="stylesheet" href="./css/botonera.css">
-<script src="./js/botonera.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="./js/botonera.js"></script>
 </head>
 
 <body>
-	<section id="volumen">
-		<span> Volumen actual: <b id="vol">1</b></span>
-	<div id="container">
-		<div id="b7" class="bttn">7</div>
-		<div id="b8" class="bttn">8</div>
-		<div id="b9" class="bttn">9</div>
+	<header>
+		<h1>Botonera de sonidos</h1>
+	</header>
+	<section class="contenedor">
+		<section id="volumen">
+			<span> Volumen actual: <b id="vol">1</b></span>
+		<div id="botones">
+			<div id="b7" class="bttn">7</div>
+			<div id="b8" class="bttn">8</div>
+			<div id="b9" class="bttn">9</div>
 
- 		<audio id="s7" preload="auto" onended="levantar(7)">
-			<source src="chogur.ogg" type="audio/ogg">
-		</audio>
-		
-		<audio id="s8" preload="auto" onended="levantar(8)">
-			<source src="mp3mp4.ogg" type="audio/ogg">
-		</audio>
+	 		<audio id="s7" preload="auto" onended="levantar(7)">
+				<source src="chogur.ogg" type="audio/ogg">
+			</audio>
+			
+			<audio id="s8" preload="auto" onended="levantar(8)">
+				<source src="mp3mp4.ogg" type="audio/ogg">
+			</audio>
 
-		 <audio id="s9" preload="auto" onended="levantar(7)">
-			<source src="sentimientomosesuale.ogg" type="audio/ogg">
-		</audio>
-	</div>
+			 <audio id="s9" preload="auto" onended="levantar(7)">
+				<source src="sentimientomosesuale.ogg" type="audio/ogg">
+			</audio>
+		</div>
+	</section>
 </body>
 </html>

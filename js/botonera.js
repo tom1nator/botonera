@@ -37,10 +37,10 @@ function stopSound(inx) {
 		s.currentTime = 0;
 }
 function colorear(inx){
-	document.getElementById("b"+inx).style.color="orange"
+	$("#b"+inx).addClass("activo");
 }
 function decolorar(inx){
-	document.getElementById("b"+inx).style.color="rgb(235,235,235)"
+	$("#b"+inx).removeClass("activo");
 }
 function apretar(inx){
 	if (playing[inx]=="false"){
