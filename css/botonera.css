@@ -1,0 +1,25 @@
+body{
+	background-color: rgb(20,20,20);
+}
+#container{
+position:relative;
+width:50%;
+margin:0 auto;
+border-color: orange;
+}
+.bttn{
+	width: 50px;
+	height: 50px;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 4px;
+	border-color: rgb(200,80,0);
+	font-size: 18pt;
+	font-family: Arial, Helvetica;
+	color: rgb(235,235,235);
+	text-align: center;
+	display: inline-block;
+}
+#vol{
+	color: white;
+}
