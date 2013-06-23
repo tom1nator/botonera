@@ -10,8 +10,12 @@ function imprimirVolumen(){
 	var s7 = document.getElementById("s7");
 	var s8 = document.getElementById("s8");
 	var s9 = document.getElementById("s9");
-
-	vol.innerHTML=s7.volume
+	if(s7.volume < 1){
+		vol.innerHTML=s7.volume;
+		vol.innerHTML = vol.innerHTML.substring(0,3)
+	}else{
+		vol.innerHTML=s7.volume
+	}
 }
 
 function subirVolumen(inx){
