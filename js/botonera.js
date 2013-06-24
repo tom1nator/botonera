@@ -1,36 +1,58 @@
 
-var playing = new Array();
-for (var i = 0; i < 3; i++) {
-	playing[i]="false"
-}
-
-
-function imprimirVolumen(){
-	var vol = document.getElementById("vol");
-	var s7 = document.getElementById("s7");
-	var s8 = document.getElementById("s8");
-	var s9 = document.getElementById("s9");
-	if(s7.volume < 1){
-		vol.innerHTML=s7.volume;
-		vol.innerHTML = vol.innerHTML.substring(0,3)
-	}else{
-		vol.innerHTML=s7.volume
+$(document).on("ready", iniciar);
+var playing;
+var reproductores = new Array("7", "8", "9");
+function iniciar (info) {
+	console.log("Botonera Iniciada!");
+	playing = new Array();
+	for (var i = 0; i < i; i++) {
+		playing[i]="false"
 	}
+
+	controlarVolumen.setear(1);
 }
 
-function subirVolumen(inx){
-	var s=document.getElementById("s"+inx);
-	var sV= s.volume;
 
-	document.getElementById("s"+inx).volume=sV+0.1
+function imprimirVolumen(valor){
+
+	$("#vol").html(parseFloat(valor).toPrecision(1));
 }
 
-function bajarVolumen(inx){
-	var s=document.getElementById("s"+inx);
-	var sV= s.volume;
+var controlarVolumen = (function(){
+	return {
+		subir : function (){
+			that = this;
+			var sV = parseFloat($("#vol").text())+0.10000000000;
+			console.log(sV);
+			sV = sV.toString().substring(0,4);
+			console.log(sV);
+			for (var i = 0; i < reproductores.length; i++) {
+				document.getElementById("s"+reproductores[i]).volume=sV;
+			}
+			imprimirVolumen(sV);
+		},
+		bajar : function (){
+			that = this;
+			var sV = parseFloat($("#vol").text())-0.10000000000;
+			console.log(sV);
+			sV = sV.toString().substring(0,4);
+			console.log(sV);
+			for (var i = 0; i < reproductores.length; i++) {
+				document.getElementById("s"+reproductores[i]).volume=sV;
+			}
+			imprimirVolumen(sV);
+		},
+		setear : function (valor){
+			that = this;
+			var sV = valor;
+			for (var i = 0; i < reproductores.length; i++) {
+				document.getElementById("s"+reproductores[i]).volume=sV;
+			}
+			imprimirVolumen(sV);
+		}
+	}
+})();
 
-	document.getElementById("s"+inx).volume=sV-0.1
-}
 function playSound(inx) {
 	var s=document.getElementById("s"+inx);
 		s.play();
@@ -100,23 +122,18 @@ document.onkeydown = function(event)
 
 	// +
 	case 107:
-		subirVolumen(7);
-		subirVolumen(8);
-		subirVolumen(9);
-		imprimirVolumen();
+		controlarVolumen.subir();
+
 		break;
 
 	// -
 	case 109:
-		bajarVolumen(7);
-		bajarVolumen(8);
-		bajarVolumen(9);
-		imprimirVolumen();
+		controlarVolumen.bajar();
+
 		break;
 
 	// 0	
 	case 96:
-		imprimirVolumen();
 		break;
 
 	default:
