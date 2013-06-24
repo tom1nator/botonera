@@ -1,13 +1,21 @@
+var audios = new Array();
 
+audios.push({tecla: "7", archivo:"chogur.ogg"});
+audios.push({tecla: "8", archivo:"mp3mp4.ogg"});
+audios.push({tecla: "9", archivo:"sentimientomosesuale.ogg"});
 $(document).on("ready", iniciar);
 var playing;
 var reproductores = new Array();
 function iniciar (info) {
 	console.log("Botonera Iniciada!");
 	playing = new Array();
-	for (var i = 0; i < i; i++) {
+	for (var i = 0; i < audios.length; i++) {
 		playing[i]="false"
 	}
+
+	$.each(audios, function (i, v) {
+		crearAudio(v.tecla, v.archivo);
+	})
 
 	controlarVolumen.setear(1);
 	$("audio").each(function(){
@@ -67,6 +75,23 @@ var controlarVolumen = (function(){
 
 function crearBoton (inx) {
 	$("#botones").append('<div id="b'+inx+'" class="bttn">'+inx+'</div>')
+}
+function crearAudio (tecla, archivo) {
+
+var audioElement = document.createElement('audio');
+
+var source1 = document.createElement('source');
+source1.type= 'audio/ogg';
+source1.src= archivo;
+audioElement.setAttribute("id","s"+tecla);
+audioElement.appendChild(source1);
+
+audioElement.preload = "auto";
+audioElement.load();
+
+	$("#botones").append(audioElement);	
+
+	 		
 }
 function playSound(inx) {
 	var s=document.getElementById("s"+inx);
