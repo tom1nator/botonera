@@ -1,7 +1,7 @@
 
 $(document).on("ready", iniciar);
 var playing;
-var reproductores = new Array("7", "8", "9");
+var reproductores = new Array();
 function iniciar (info) {
 	console.log("Botonera Iniciada!");
 	playing = new Array();
@@ -10,13 +10,22 @@ function iniciar (info) {
 	}
 
 	controlarVolumen.setear(1);
+	$("audio").each(function(){
+		id = $(this).attr("id").substring(1);
+		$(this).bind("ended", function (info) {
+			var id = $(this).attr("id").substring(1);
+			console.log("El ID es: "+id)
+			console.log(id);
+			levantar(id);
+		});	
+		crearBoton(id);
+		reproductores.push(id);
+		console.log("El ID es: "+id)
+
+	});
+
 }
 
-
-function imprimirVolumen(valor){
-
-	$("#vol").html(parseFloat(valor).toPrecision(1));
-}
 
 var controlarVolumen = (function(){
 	return {
@@ -29,7 +38,7 @@ var controlarVolumen = (function(){
 			for (var i = 0; i < reproductores.length; i++) {
 				document.getElementById("s"+reproductores[i]).volume=sV;
 			}
-			imprimirVolumen(sV);
+			this.imprimir(sV);
 		},
 		bajar : function (){
 			that = this;
@@ -40,7 +49,7 @@ var controlarVolumen = (function(){
 			for (var i = 0; i < reproductores.length; i++) {
 				document.getElementById("s"+reproductores[i]).volume=sV;
 			}
-			imprimirVolumen(sV);
+			this.imprimir(sV);
 		},
 		setear : function (valor){
 			that = this;
@@ -48,11 +57,17 @@ var controlarVolumen = (function(){
 			for (var i = 0; i < reproductores.length; i++) {
 				document.getElementById("s"+reproductores[i]).volume=sV;
 			}
-			imprimirVolumen(sV);
+			this.imprimir(sV);
+		},
+		imprimir: function (valor) {
+			$("#vol").html(parseFloat(valor).toPrecision(1));
 		}
 	}
 })();
 
+function crearBoton (inx) {
+	$("#botones").append('<div id="b'+inx+'" class="bttn">'+inx+'</div>')
+}
 function playSound(inx) {
 	var s=document.getElementById("s"+inx);
 		s.play();
@@ -85,6 +100,7 @@ function apretar(inx){
 	}
 }
 function levantar(inx){
+	console.log(inx);
 	decolorar(inx);
 	playing[inx]="false";
 	stopSound(inx);
